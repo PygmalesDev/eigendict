@@ -6,7 +6,6 @@ import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
@@ -33,7 +32,8 @@ public class StartMenuController extends CommonController<AnchorPane> {
 
         SetupDictionaryComponent setupDictionary = new SetupDictionaryComponent(this.context);
         setupDictionary.setOnLocaleChanged(this::updateLocalization);
-        setupDictionary.setOnCreateDictionaryButtonPressed(this::scrollSetupPane);
+        setupDictionary.setOnCreateDictionaryButtonPressed(_ -> this.scrollSetupPane(true));
+        setupDictionary.setOnReturnButtonPressed(_ -> this.scrollSetupPane(false));
 
         this.setupDictionaryPane.getChildren().add(setupDictionary.root);
     }
@@ -43,7 +43,7 @@ public class StartMenuController extends CommonController<AnchorPane> {
         this.init();
     }
 
-    private void scrollSetupPane(ActionEvent actionEvent) {
+    private void scrollSetupPane(boolean scrollForward) {
         if (Objects.nonNull(this.scrollAnimation)) {
             this.scrollAnimation.stop();
         }
@@ -52,7 +52,7 @@ public class StartMenuController extends CommonController<AnchorPane> {
                         Duration.millis(300),
                         new KeyValue(
                                 this.setupDictionaryScrollPane.hvalueProperty(),
-                                1.0,
+                                scrollForward ? 1.0 : 0.0,
                                 Interpolator.EASE_BOTH
                         )
                 )

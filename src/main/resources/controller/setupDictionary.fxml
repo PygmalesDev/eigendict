@@ -5,25 +5,14 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
 
-
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0"
-         prefWidth="972.0" type="Pane" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
-   <Line endX="-100.0" endY="204.0" layoutX="587.0" layoutY="-23.0" startX="-100.0" startY="24.0"/>
-   <Button fx:id="createDictionaryButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true"
-           layoutX="145.0" layoutY="13.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-           minWidth="-Infinity" mnemonicParsing="false" prefHeight="39.0" prefWidth="200.0"
-           text="%startMenu.createDictionaryButton" textAlignment="CENTER"/>
-   <TextArea fx:id="suggestionTextArea" editable="false" layoutX="145.0" layoutY="64.0" prefHeight="12.0"
-             prefWidth="200.0" text="%startMenu.selectDictionaryTip" wrapText="true"/>
-   <ChoiceBox fx:id="localeChoiceBox" layoutX="144.0" layoutY="131.0" prefHeight="39.0" prefWidth="200.0"/>
-   <TextField fx:id="dictionaryNameInputField" layoutX="621.0" layoutY="14.0" prefHeight="39.0" prefWidth="229.0"
-              promptText="%startMenu.enterDictionaryName"/>
-   <Button fx:id="creationFinishedButton" alignment="CENTER" contentDisplay="CENTER" layoutX="660.0" layoutY="131.0"
-           maxWidth="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="39.0" prefWidth="145.0"
-           text="%startMenu.finishDictionaryCreation" textAlignment="CENTER" textOverrun="CLIP"/>
-   <TextField fx:id="dictionaryPathField" layoutX="621.0" layoutY="71.0" prefHeight="39.0" prefWidth="229.0"/>
-   <Button fx:id="openDirectoryChooserButton" layoutX="859.0" layoutY="73.0" mnemonicParsing="false" prefHeight="39.0"
-           prefWidth="24.0" text="Button"/>
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="972.0" type="Pane" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+   <Button fx:id="createDictionaryButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="145.0" layoutY="32.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="39.0" prefWidth="200.0" text="%startMenu.createDictionaryButton" textAlignment="CENTER" />
+   <TextArea fx:id="suggestionTextArea" editable="false" layoutX="145.0" layoutY="83.0" prefHeight="12.0" prefWidth="200.0" text="%startMenu.selectDictionaryTip" wrapText="true" />
+   <ChoiceBox fx:id="localeChoiceBox" layoutX="144.0" layoutY="150.0" prefHeight="39.0" prefWidth="200.0" />
+   <TextField fx:id="dictionaryNameInputField" layoutX="621.0" layoutY="33.0" prefHeight="39.0" prefWidth="229.0" promptText="%startMenu.enterDictionaryName" />
+   <Button fx:id="creationFinishedButton" alignment="CENTER" contentDisplay="CENTER" layoutX="660.0" layoutY="150.0" maxWidth="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="39.0" prefWidth="145.0" text="%startMenu.finishDictionaryCreation" textAlignment="CENTER" textOverrun="CLIP" />
+   <TextField fx:id="dictionaryPathField" layoutX="621.0" layoutY="90.0" prefHeight="39.0" prefWidth="229.0" />
+   <Button fx:id="openDirectoryChooserButton" layoutX="859.0" layoutY="92.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="24.0" text="Button" />
+   <Button fx:id="returnButton" layoutX="509.0" layoutY="33.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="39.0" prefWidth="96.0" text="%startMenu.returnButton" />
 </fx:root>

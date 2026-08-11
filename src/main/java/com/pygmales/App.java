@@ -10,6 +10,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
         AppContext context = new AppContext();
+        context.stage = primaryStage;
 
         StartMenuController appStart = new StartMenuController(context);
 
