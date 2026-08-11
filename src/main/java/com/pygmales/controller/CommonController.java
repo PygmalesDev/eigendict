@@ -17,9 +17,10 @@ public class CommonController<T extends Pane> {
         this.context = context;
         this.sceneName = sceneName;
         this.root = rootFactory.get();
+        this.loadFXML();
     }
 
-    public void init() {
+    protected final void loadFXML() {
         this.root.getChildren().clear();
         try {
             URL data = getClass().getResource(String.format("/controller/%1s.fxml", this.sceneName));

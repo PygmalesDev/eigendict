@@ -1,42 +1,62 @@
 package com.pygmales.controller;
 
+import com.pygmales.component.SetupDictionaryComponent;
 import com.pygmales.utils.AppContext;
-import javafx.beans.Observable;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 
 import java.util.Locale;
-
-import static com.pygmales.constant.Constants.LANGUAGE_MAP;
+import java.util.Objects;
 
 public class StartMenuController extends CommonController<AnchorPane> {
     @FXML
-    public ChoiceBox<String> localeChoiceBox;
+    AnchorPane setupDictionaryPane;
+    @FXML
+    ScrollPane setupDictionaryScrollPane;
 
-    private final ObservableList<String> localeValues = FXCollections.observableList(LANGUAGE_MAP.keySet().stream().toList());
-    private String currentSelectedLocale = localeValues.getFirst();
+    private Timeline scrollAnimation;
 
     public StartMenuController(AppContext context) {
         super("startMenu", AnchorPane::new, context);
         this.init();
     }
 
-    private void onLocaleChanged(Observable obs, String oldValue, String newValue) {
-        String languageTag = LANGUAGE_MAP.getOrDefault(newValue, LANGUAGE_MAP.get(localeValues.getFirst()));
-        this.context.locale = Locale.forLanguageTag(languageTag);
-        this.currentSelectedLocale = newValue;
+    public void init() {
+        super.loadFXML();
+
+        SetupDictionaryComponent setupDictionary = new SetupDictionaryComponent(this.context);
+        setupDictionary.setOnLocaleChanged(this::updateLocalization);
+        setupDictionary.setOnCreateDictionaryButtonPressed(this::scrollSetupPane);
+
+        this.setupDictionaryPane.getChildren().add(setupDictionary.root);
+    }
+
+    private void updateLocalization(Locale locale) {
+        this.context.locale = locale;
         this.init();
     }
 
-    @Override
-    public void init() {
-        super.init();
-
-        this.localeChoiceBox.setItems(this.localeValues);
-        this.localeChoiceBox.setValue(this.currentSelectedLocale);
-        this.localeChoiceBox.valueProperty().addListener(this::onLocaleChanged);
+    private void scrollSetupPane(ActionEvent actionEvent) {
+        if (Objects.nonNull(this.scrollAnimation)) {
+            this.scrollAnimation.stop();
+        }
+        this.scrollAnimation = new Timeline(
+                new KeyFrame(
+                        Duration.millis(300),
+                        new KeyValue(
+                                this.setupDictionaryScrollPane.hvalueProperty(),
+                                1.0,
+                                Interpolator.EASE_BOTH
+                        )
+                )
+        );
+        this.scrollAnimation.play();
     }
 }

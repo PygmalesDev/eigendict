@@ -1,43 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root prefHeight="400.0" prefWidth="600.0" type="AnchorPane" xmlns="http://javafx.com/javafx/26"
-         xmlns:fx="http://javafx.com/fxml/1">
-   <HBox alignment="BOTTOM_LEFT" prefHeight="400.0" prefWidth="600.0">
+<fx:root prefHeight="500.0" prefWidth="700.0" type="AnchorPane" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+   <HBox alignment="BOTTOM_LEFT" prefHeight="500.0" prefWidth="700.0">
       <VBox prefHeight="400.0" prefWidth="192.0">
          <HBox.margin>
-            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0"/>
+            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
          </HBox.margin>
-         <Label fx:id="dictionariesLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0"
-                prefWidth="200.0" text="%startMenu.dictionariesLabel" textAlignment="CENTER" textOverrun="CLIP"/>
-         <ListView fx:id="dictionariesListView" prefWidth="200.0">
+         <Label fx:id="dictionariesLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="200.0" text="%startMenu.dictionariesLabel" textAlignment="CENTER" textOverrun="CLIP" />
+         <ListView fx:id="dictionariesListView" prefHeight="474.0" prefWidth="186.0">
             <VBox.margin>
-               <Insets bottom="3.0" left="3.0" right="3.0" top="3.0"/>
+               <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
             </VBox.margin>
          </ListView>
       </VBox>
-      <Pane prefWidth="400.0">
-         <Button fx:id="createDictionaryButton" alignment="CENTER" contentDisplay="CENTER" layoutX="100.0"
-                 layoutY="229.0" maxWidth="200.0" mnemonicParsing="false" text="%startMenu.createDictionaryButton"
-                 textAlignment="CENTER"/>
-         <Label fx:id="appNameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="120.0" layoutY="184.0"
-                prefHeight="27.0" prefWidth="150.0" text="%startMenu.appName" textAlignment="CENTER"/>
-         <TextArea fx:id="suggestionTextArea" editable="false" layoutX="100.0" layoutY="280.0" prefHeight="12.0"
-                   prefWidth="200.0" text="%startMenu.selectDictionaryTip" wrapText="true"/>
-         <ImageView fx:id="appLogoImageView" fitHeight="150.0" fitWidth="150.0" layoutX="125.0" layoutY="23.0"
-                    pickOnBounds="true" preserveRatio="true"/>
-         <ChoiceBox fx:id="localeChoiceBox" layoutX="99.0" layoutY="347.0" prefHeight="39.0" prefWidth="200.0"/>
+      <Pane prefHeight="500.0" prefWidth="504.0">
+         <Label fx:id="appNameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="177.0" layoutY="209.0" prefHeight="27.0" prefWidth="150.0" text="%startMenu.appName" textAlignment="CENTER" />
+         <ImageView fx:id="appLogoImageView" fitHeight="150.0" fitWidth="150.0" layoutX="177.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true" />
+         <ScrollPane fx:id="setupDictionaryScrollPane" hbarPolicy="NEVER" layoutX="9.0" layoutY="263.0"
+                     maxHeight="400.0" maxWidth="486.0" pannable="true" prefHeight="223.0" prefWidth="486.0"
+                     vbarPolicy="NEVER">
+            <AnchorPane fx:id="setupDictionaryPane" minHeight="0.0" minWidth="0.0" prefHeight="200.0"/>
+         </ScrollPane>
       </Pane>
    </HBox>
 </fx:root>
